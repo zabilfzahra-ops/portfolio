@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fr" class="scroll-smooth">
+<html lang="fr" class="scroll-smooth" id="html-root">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZABIL Fatima Zahra — Ingénieure Pédagogique & Spécialiste EdTech</title>
+    <title data-fr="ZABIL Fatima Zahra — Ingénieure Pédagogique & Spécialiste EdTech" data-en="ZABIL Fatima Zahra — Educational Engineer & EdTech Specialist">ZABIL Fatima Zahra — Ingénieure Pédagogique & Spécialiste EdTech</title>
     <!-- Tailwind CSS pour une mise en page moderne et responsive -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts Inter & Outfit -->
@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
@@ -33,29 +34,58 @@
         }
     </script>
     <style>
+        /* Styles de base pour le mode sombre par défaut */
         body {
             background-color: #0b0f19;
             color: #f5f5f7;
             overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
-        /* Effet de flou glassmorphism sophistiqué */
+        /* Styles pour le mode clair */
+        .light body {
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+
+        /* Effet de flou glassmorphism sophistiqué (Mode Sombre) */
         .glass {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.3s ease;
         }
+        .light .glass {
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+        }
+
         .glass-card {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
             backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
+        .light .glass-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(241, 245, 249, 0.8) 100%);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+        }
+
         .glass-card:hover {
             transform: translateY(-4px);
             border-color: rgba(0, 113, 227, 0.4);
             box-shadow: 0 20px 40px -15px rgba(0, 113, 227, 0.15);
         }
+
+        /* Adaptations textuelles automatiques pour le mode clair */
+        .light .text-gray-300 { color: #475569 !important; }
+        .light .text-gray-400 { color: #64748b !important; }
+        .light .text-gray-500 { color: #94a3b8 !important; }
+        .light .text-white { color: #0f172a !important; }
+        .light .border-white\/10 { border-color: rgba(0, 0, 0, 0.1) !important; }
+
         /* Style des barres de défilement personnalisées */
         ::-webkit-scrollbar {
             width: 8px;
@@ -63,9 +93,15 @@
         ::-webkit-scrollbar-track {
             background: #0b0f19;
         }
+        .light ::-webkit-scrollbar-track {
+            background: #f8fafc;
+        }
         ::-webkit-scrollbar-thumb {
             background: rgba(255, 255, 255, 0.15);
             border-radius: 4px;
+        }
+        .light ::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.15);
         }
         ::-webkit-scrollbar-thumb:hover {
             background: rgba(255, 255, 255, 0.3);
@@ -78,21 +114,29 @@
     <header class="fixed top-0 left-0 right-0 z-50 px-6 py-4">
         <nav class="max-w-6xl mx-auto glass rounded-full px-6 py-3 flex items-center justify-between shadow-2xl">
             <a href="#accueil" class="font-heading font-bold text-lg tracking-wider text-white flex items-center gap-2">
-                <span class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-sm font-semibold">ZF</span>
+                <span class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-sm font-semibold text-white">ZF</span>
                 <span>ZABIL</span>
             </a>
             
             <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
-                <a href="#accueil" class="hover:text-white transition-colors">Accueil</a>
-                <a href="#parcours" class="hover:text-white transition-colors">Parcours</a>
-                <a href="#competences" class="hover:text-white transition-colors">Compétences</a>
-                <a href="#projets" class="hover:text-white transition-colors">Projets</a>
-                <a href="#experiences" class="hover:text-white transition-colors">Expériences</a>
+                <a href="#accueil" class="hover:text-blue-500 transition-colors" data-fr="Accueil" data-en="Home">Accueil</a>
+                <a href="#parcours" class="hover:text-blue-500 transition-colors" data-fr="Parcours" data-en="Background">Parcours</a>
+                <a href="#competences" class="hover:text-blue-500 transition-colors" data-fr="Compétences" data-en="Skills">Compétences</a>
+                <a href="#projets" class="hover:text-blue-500 transition-colors" data-fr="Projets" data-en="Projects">Projets</a>
+                <a href="#experiences" class="hover:text-blue-500 transition-colors" data-fr="Expériences" data-en="Experience">Expériences</a>
             </div>
 
-            <div class="flex items-center gap-3">
-                <a href="#contact" class="bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium px-5 py-2.5 rounded-full transition-all shadow-lg shadow-blue-600/20 flex items-center gap-2">
-                    <span>Me contacter</span>
+            <div class="flex items-center gap-2 sm:gap-3">
+                <!-- Bouton Traduction FR/EN -->
+                <button id="lang-toggle" onclick="toggleLanguage()" class="glass w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold text-gray-300 hover:text-white transition-all" title="Changer de langue / Switch Language">
+                    EN
+                </button>
+                <!-- Bouton Light/Dark Mode -->
+                <button id="theme-toggle" onclick="toggleTheme()" class="glass w-9 h-9 rounded-full flex items-center justify-center text-sm text-yellow-400 hover:scale-110 transition-all" title="Changer le mode d'affichage">
+                    <i class="fa-solid fa-sun" id="theme-icon"></i>
+                </button>
+                <a href="#contact" class="hidden sm:flex bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium px-5 py-2.5 rounded-full transition-all shadow-lg shadow-blue-600/20 items-center gap-2">
+                    <span data-fr="Me contacter" data-en="Contact me">Me contacter</span>
                     <i class="fa-solid fa-arrow-right text-xs"></i>
                 </a>
             </div>
@@ -109,7 +153,7 @@
             <div class="lg:col-span-7 space-y-8">
                 <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass text-xs font-medium text-blue-400 border border-blue-500/20">
                     <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
-                    Disponible pour de nouveaux projets EdTech
+                    <span data-fr="Disponible pour de nouveaux projets EdTech" data-en="Available for new EdTech projects">Disponible pour de nouveaux projets EdTech</span>
                 </div>
                 
                 <div class="space-y-4">
@@ -117,18 +161,18 @@
                         ZABIL <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400">Fatima Zahra</span>
                     </h1>
                     <p class="text-xl text-gray-300 font-light tracking-wide">
-                        Ingénieure pédagogique & Spécialiste <span class="text-white font-medium">EdTech</span> (23 ans)
+                        <span data-fr="Ingénieure pédagogique & Spécialiste" data-en="Educational Engineer &">Ingénieure pédagogique & Spécialiste</span> <span class="text-white font-medium">EdTech</span> <span data-fr="(23 ans)" data-en="(23 years old)">(23 ans)</span>
                     </p>
                 </div>
 
-                <p class="text-gray-400 text-base sm:text-lg font-light leading-relaxed max-w-2xl">
+                <p class="text-gray-400 text-base sm:text-lg font-light leading-relaxed max-w-2xl" data-fr="Passionnée par l’éducation, la technologie et l’innovation, je conçois des expériences d'apprentissage impactantes, inclusives et hautement engageantes." data-en="Passionate about education, technology, and innovation, I design impactful, inclusive, and highly engaging learning experiences.">
                     Passionnée par l’éducation, la technologie et l’innovation, je conçois des expériences d'apprentissage impactantes, inclusives et hautement engageantes.
                 </p>
 
                 <!-- Boutons d'action rapide -->
                 <div class="flex flex-wrap items-center gap-4 pt-2">
-                    <a href="#parcours" class="bg-white text-gray-900 font-semibold px-6 py-3.5 rounded-full hover:bg-gray-100 transition-all flex items-center gap-2 shadow-xl">
-                        <span>Découvrir mon parcours</span>
+                    <a href="#parcours" class="bg-blue-600 text-white font-semibold px-6 py-3.5 rounded-full hover:bg-blue-500 transition-all flex items-center gap-2 shadow-xl">
+                        <span data-fr="Découvrir mon parcours" data-en="Discover my background">Découvrir mon parcours</span>
                         <i class="fa-solid fa-arrow-down text-xs"></i>
                     </a>
                     <a href="https://www.linkedin.com/in/fatima-zahra-zabil-33a0033b1/" target="_blank" rel="noopener noreferrer" class="glass px-5 py-3.5 rounded-full text-white font-medium hover:bg-white/10 transition-all flex items-center gap-2">
@@ -143,11 +187,11 @@
 
                 <!-- Informations de contact rapides -->
                 <div class="flex flex-wrap items-center gap-6 pt-6 border-t border-white/10 text-sm text-gray-400">
-                    <a href="mailto:zabilfzahra@gmail.com" class="hover:text-white transition-colors flex items-center gap-2">
+                    <a href="mailto:zabilfzahra@gmail.com" class="hover:text-blue-500 transition-colors flex items-center gap-2">
                         <i class="fa-regular fa-envelope text-blue-400"></i> zabilfzahra@gmail.com
                     </a>
                     <span class="flex items-center gap-2">
-                        <i class="fa-solid fa-location-dot text-red-400"></i> Agadir, Maroc
+                        <i class="fa-solid fa-location-dot text-red-400"></i> <span data-fr="Agadir, Maroc" data-en="Agadir, Morocco">Agadir, Maroc</span>
                     </span>
                 </div>
             </div>
@@ -163,12 +207,12 @@
                         <span class="text-xs uppercase tracking-widest text-gray-400 font-mono">EdTech Studio</span>
                     </div>
                     <div class="space-y-3 my-auto">
-                        <div class="h-3 w-3/4 bg-white/10 rounded-full"></div>
-                        <div class="h-3 w-1/2 bg-white/10 rounded-full"></div>
+                        <div class="h-3 w-3/4 bg-white/20 rounded-full"></div>
+                        <div class="h-3 w-1/2 bg-white/20 rounded-full"></div>
                         <div class="h-3 w-5/6 bg-blue-500/30 rounded-full"></div>
                     </div>
                     <div class="pt-4 border-t border-white/10 flex justify-between items-center text-xs text-gray-400">
-                        <span>Innovation Pédagogique</span>
+                        <span data-fr="Innovation Pédagogique" data-en="Pedagogical Innovation">Innovation Pédagogique</span>
                         <span class="text-blue-400 font-mono">2026</span>
                     </div>
                 </div>
@@ -179,8 +223,8 @@
     <!-- SECTION PARCOURS (TIMELINE) -->
     <section id="parcours" class="py-24 px-6 max-w-6xl mx-auto">
         <div class="space-y-4 mb-16">
-            <span class="text-blue-400 font-mono text-xs uppercase tracking-widest">Évolution & Diplômes</span>
-            <h2 class="font-heading text-3xl sm:text-4xl font-bold text-white">Mon Parcours Académique</h2>
+            <span class="text-blue-400 font-mono text-xs uppercase tracking-widest" data-fr="Évolution & Diplômes" data-en="Evolution & Degrees">Évolution & Diplômes</span>
+            <h2 class="font-heading text-3xl sm:text-4xl font-bold text-white" data-fr="Mon Parcours Académique" data-en="My Academic Background">Mon Parcours Académique</h2>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -189,16 +233,16 @@
                 <div class="absolute top-0 right-0 w-24 h-24 bg-blue-500/10 rounded-bl-full pointer-events-none transition-all group-hover:scale-110"></div>
                 <div>
                     <div class="flex justify-between items-center mb-4">
-                        <span class="px-2.5 py-1 rounded-full bg-blue-500/20 text-blue-400 text-xs font-semibold">En cours</span>
+                        <span class="px-2.5 py-1 rounded-full bg-blue-500/20 text-blue-400 text-xs font-semibold" data-fr="En cours" data-en="Ongoing">En cours</span>
                         <span class="text-xs font-mono text-gray-400">2026</span>
                     </div>
                     <h3 class="font-heading font-bold text-lg text-white mb-2">Master TEIP & DNE</h3>
-                    <p class="text-xs text-gray-300 leading-relaxed">
+                    <p class="text-xs text-gray-300 leading-relaxed" data-fr="Double diplômation : Master Technologie Éducative et Innovation Pédagogique (ESEF Agadir) & Master Dispositifs Numériques Éducatifs (Université Bordeaux Montaigne)." data-en="Double degree: Master Educational Technology and Pedagogical Innovation (ESEF Agadir) & Master Digital Educational Devices (Université Bordeaux Montaigne).">
                         Double diplômation : Master Technologie Éducative et Innovation Pédagogique (ESEF Agadir) & Master Dispositifs Numériques Éducatifs (Université Bordeaux Montaigne).
                     </p>
                 </div>
                 <div class="mt-6 pt-4 border-t border-white/10 text-xs text-blue-400 font-medium flex items-center gap-1">
-                    <i class="fa-solid fa-graduation-cap"></i> Double Diplômation
+                    <i class="fa-solid fa-graduation-cap"></i> <span data-fr="Double Diplômation" data-en="Double Degree">Double Diplômation</span>
                 </div>
             </div>
 
@@ -206,11 +250,11 @@
             <div class="glass-card rounded-2xl p-6 flex flex-col justify-between relative overflow-hidden group">
                 <div>
                     <div class="flex justify-between items-center mb-4">
-                        <span class="px-2.5 py-1 rounded-full bg-white/10 text-gray-300 text-xs font-semibold">Diplômée</span>
+                        <span class="px-2.5 py-1 rounded-full bg-white/10 text-gray-300 text-xs font-semibold" data-fr="Diplômée" data-en="Graduated">Diplômée</span>
                         <span class="text-xs font-mono text-gray-400">2025</span>
                     </div>
-                    <h3 class="font-heading font-bold text-lg text-white mb-2">Licence en Éducation</h3>
-                    <p class="text-xs text-gray-300 leading-relaxed">
+                    <h3 class="font-heading font-bold text-lg text-white mb-2" data-fr="Licence en Éducation" data-en="Bachelor in Education">Licence en Éducation</h3>
+                    <p class="text-xs text-gray-300 leading-relaxed" data-fr="Enseignement Primaire Bilingue, École Supérieure de l'Éducation et de Formation – Agadir." data-en="Bilingual Primary Education, École Supérieure de l'Éducation et de Formation – Agadir.">
                         Enseignement Primaire Bilingue, École Supérieure de l'Éducation et de Formation – Agadir.
                     </p>
                 </div>
@@ -223,16 +267,16 @@
             <div class="glass-card rounded-2xl p-6 flex flex-col justify-between relative overflow-hidden group">
                 <div>
                     <div class="flex justify-between items-center mb-4">
-                        <span class="px-2.5 py-1 rounded-full bg-white/10 text-gray-300 text-xs font-semibold">Diplômée</span>
+                        <span class="px-2.5 py-1 rounded-full bg-white/10 text-gray-300 text-xs font-semibold" data-fr="Diplômée" data-en="Graduated">Diplômée</span>
                         <span class="text-xs font-mono text-gray-400">2024</span>
                     </div>
                     <h3 class="font-heading font-bold text-lg text-white mb-2">DEUG</h3>
-                    <p class="text-xs text-gray-300 leading-relaxed">
+                    <p class="text-xs text-gray-300 leading-relaxed" data-fr="Diplôme d'Études Universitaires Générales, Université Mohammed V – Rabat." data-en="General University Studies Diploma, Mohammed V University – Rabat.">
                         Diplôme d'Études Universitaires Générales, Université Mohammed V – Rabat.
                     </p>
                 </div>
                 <div class="mt-6 pt-4 border-t border-white/10 text-xs text-gray-400 flex items-center gap-1">
-                    <i class="fa-solid fa-university"></i> Université Mohammed V
+                    <i class="fa-solid fa-university"></i> <span data-fr="Université Mohammed V" data-en="Mohammed V University">Université Mohammed V</span>
                 </div>
             </div>
 
@@ -240,16 +284,16 @@
             <div class="glass-card rounded-2xl p-6 flex flex-col justify-between relative overflow-hidden group">
                 <div>
                     <div class="flex justify-between items-center mb-4">
-                        <span class="px-2.5 py-1 rounded-full bg-white/10 text-gray-300 text-xs font-semibold">Diplômée</span>
+                        <span class="px-2.5 py-1 rounded-full bg-white/10 text-gray-300 text-xs font-semibold" data-fr="Diplômée" data-en="Graduated">Diplômée</span>
                         <span class="text-xs font-mono text-gray-400">2021</span>
                     </div>
-                    <h3 class="font-heading font-bold text-lg text-white mb-2">Baccalauréat</h3>
-                    <p class="text-xs text-gray-300 leading-relaxed">
+                    <h3 class="font-heading font-bold text-lg text-white mb-2" data-fr="Baccalauréat" data-en="High School Diploma">Baccalauréat</h3>
+                    <p class="text-xs text-gray-300 leading-relaxed" data-fr="Science Physique Option Française, Lycée Bab Sahra – Guelmim." data-en="Physical Sciences French Option, Bab Sahra High School – Guelmim.">
                         Science Physique Option Française, Lycée Bab Sahra – Guelmim.
                     </p>
                 </div>
                 <div class="mt-6 pt-4 border-t border-white/10 text-xs text-gray-400 flex items-center gap-1">
-                    <i class="fa-solid fa-award"></i> Lycée Bab Sahra
+                    <i class="fa-solid fa-award"></i> <span data-fr="Lycée Bab Sahra" data-en="Bab Sahra High School">Lycée Bab Sahra</span>
                 </div>
             </div>
         </div>
@@ -258,8 +302,8 @@
     <!-- SECTION COMPÉTENCES -->
     <section id="competences" class="py-24 px-6 max-w-6xl mx-auto">
         <div class="space-y-4 mb-16">
-            <span class="text-blue-400 font-mono text-xs uppercase tracking-widest">Savoir-faire technique</span>
-            <h2 class="font-heading text-3xl sm:text-4xl font-bold text-white">Mes Compétences Digitales & EdTech</h2>
+            <span class="text-blue-400 font-mono text-xs uppercase tracking-widest" data-fr="Savoir-faire technique" data-en="Technical Know-how">Savoir-faire technique</span>
+            <h2 class="font-heading text-3xl sm:text-4xl font-bold text-white" data-fr="Mes Compétences Digitales & EdTech" data-en="My Digital & EdTech Skills">Mes Compétences Digitales & EdTech</h2>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -268,14 +312,14 @@
                 <div class="w-10 h-10 rounded-xl bg-blue-600/20 text-blue-400 flex items-center justify-center font-bold">
                     <i class="fa-solid fa-photo-film"></i>
                 </div>
-                <h3 class="font-heading font-bold text-white text-lg">Bureautique & Multimédia</h3>
+                <h3 class="font-heading font-bold text-white text-lg" data-fr="Bureautique & Multimédia" data-en="Office & Multimedia">Bureautique & Multimédia</h3>
                 <ul class="space-y-2 text-sm text-gray-300">
                     <li class="flex justify-between items-center"><span>Word</span><div class="w-16 h-1.5 bg-blue-500 rounded-full"></div></li>
                     <li class="flex justify-between items-center"><span>Excel</span><div class="w-16 h-1.5 bg-blue-500 rounded-full"></div></li>
                     <li class="flex justify-between items-center"><span>PowerPoint</span><div class="w-16 h-1.5 bg-blue-500 rounded-full"></div></li>
                     <li class="flex justify-between items-center"><span>Canva</span><div class="w-16 h-1.5 bg-blue-500 rounded-full"></div></li>
                     <li class="flex justify-between items-center"><span>CapCut</span><div class="w-16 h-1.5 bg-blue-500 rounded-full"></div></li>
-                    <li class="text-xs text-gray-400 pt-1">+ Montage vidéo pédagogique</li>
+                    <li class="text-xs text-gray-400 pt-1" data-fr="+ Montage vidéo pédagogique" data-en="+ Educational video editing">+ Montage vidéo pédagogique</li>
                 </ul>
             </div>
 
@@ -284,7 +328,7 @@
                 <div class="w-10 h-10 rounded-xl bg-indigo-600/20 text-indigo-400 flex items-center justify-center font-bold">
                     <i class="fa-solid fa-server"></i>
                 </div>
-                <h3 class="font-heading font-bold text-white text-lg">LMS & Normes</h3>
+                <h3 class="font-heading font-bold text-white text-lg" data-fr="LMS & Normes" data-en="LMS & Standards">LMS & Normes</h3>
                 <ul class="space-y-3 text-sm text-gray-300">
                     <li class="flex justify-between items-center"><span>Moodle</span><div class="w-16 h-1.5 bg-indigo-500 rounded-full"></div></li>
                     <li class="flex justify-between items-center"><span>SCORM</span><div class="w-14 h-1.5 bg-indigo-500 rounded-full"></div></li>
@@ -297,7 +341,7 @@
                 <div class="w-10 h-10 rounded-xl bg-purple-600/20 text-purple-400 flex items-center justify-center font-bold">
                     <i class="fa-solid fa-pen-nib"></i>
                 </div>
-                <h3 class="font-heading font-bold text-white text-lg">Conception Auteur</h3>
+                <h3 class="font-heading font-bold text-white text-lg" data-fr="Conception Auteur" data-en="Authoring Design">Conception Auteur</h3>
                 <ul class="space-y-3 text-sm text-gray-300">
                     <li class="flex justify-between items-center"><span>Storyline 360</span><div class="w-14 h-1.5 bg-purple-500 rounded-full"></div></li>
                     <li class="flex justify-between items-center"><span>Storyboard</span><div class="w-16 h-1.5 bg-purple-500 rounded-full"></div></li>
@@ -309,11 +353,11 @@
                 <div class="w-10 h-10 rounded-xl bg-emerald-600/20 text-emerald-400 flex items-center justify-center font-bold">
                     <i class="fa-solid fa-globe"></i>
                 </div>
-                <h3 class="font-heading font-bold text-white text-lg">Langues</h3>
+                <h3 class="font-heading font-bold text-white text-lg" data-fr="Langues" data-en="Languages">Langues</h3>
                 <ul class="space-y-3 text-sm text-gray-300">
-                    <li class="flex justify-between items-center"><span>Arabe</span><span class="text-xs text-emerald-400 font-medium">Maternelle</span></li>
-                    <li class="flex justify-between items-center"><span>Français</span><span class="text-xs text-emerald-400 font-medium">Courant</span></li>
-                    <li class="flex justify-between items-center"><span>Anglais</span><span class="text-xs text-emerald-400 font-medium">Intermédiaire</span></li>
+                    <li class="flex justify-between items-center"><span data-fr="Arabe" data-en="Arabic">Arabe</span><span class="text-xs text-emerald-400 font-medium" data-fr="Maternelle" data-en="Native">Maternelle</span></li>
+                    <li class="flex justify-between items-center"><span data-fr="Français" data-en="French">Français</span><span class="text-xs text-emerald-400 font-medium" data-fr="Courant" data-en="Fluent">Courant</span></li>
+                    <li class="flex justify-between items-center"><span data-fr="Anglais" data-en="English">Anglais</span><span class="text-xs text-emerald-400 font-medium" data-fr="Intermédiaire" data-en="Intermediate">Intermédiaire</span></li>
                 </ul>
             </div>
         </div>
@@ -322,8 +366,8 @@
     <!-- SECTION PROJETS PHARES -->
     <section id="projets" class="py-24 px-6 max-w-6xl mx-auto">
         <div class="space-y-4 mb-16">
-            <span class="text-blue-400 font-mono text-xs uppercase tracking-widest">Réalisations innovantes</span>
-            <h2 class="font-heading text-3xl sm:text-4xl font-bold text-white">Mes Projets Phares</h2>
+            <span class="text-blue-400 font-mono text-xs uppercase tracking-widest" data-fr="Réalisations innovantes" data-en="Innovative achievements">Réalisations innovantes</span>
+            <h2 class="font-heading text-3xl sm:text-4xl font-bold text-white" data-fr="Mes Projets Phares" data-en="My Featured Projects">Mes Projets Phares</h2>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -331,14 +375,14 @@
             <div class="glass-card rounded-3xl overflow-hidden flex flex-col justify-between group">
                 <div class="p-8 space-y-4">
                     <div class="inline-block px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-xs font-semibold">EdTech</div>
-                    <h3 class="font-heading font-bold text-xl text-white">Laboratoire Virtuel 3D</h3>
-                    <p class="text-sm text-gray-300 leading-relaxed font-light">
+                    <h3 class="font-heading font-bold text-xl text-white" data-fr="Laboratoire Virtuel 3D" data-en="3D Virtual Laboratory">Laboratoire Virtuel 3D</h3>
+                    <p class="text-sm text-gray-300 leading-relaxed font-light" data-fr="Simulation d'expériences scientifiques en 3D pour pallier le manque de laboratoires physiques et sécuriser les apprentissages des élèves." data-en="3D scientific experiment simulation to compensate for the lack of physical labs and secure student learning.">
                         Simulation d'expériences scientifiques en 3D pour pallier le manque de laboratoires physiques et sécuriser les apprentissages des élèves.
                     </p>
                 </div>
                 <div class="p-8 pt-0">
                     <a href="https://fascinating-kangaroo-f45cac.netlify.app/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-blue-400 font-medium text-sm group-hover:text-white transition-colors">
-                        <span>Voir le projet</span>
+                        <span data-fr="Voir le projet" data-en="View project">Voir le projet</span>
                         <i class="fa-solid fa-arrow-up-right-from-square text-xs transition-transform group-hover:translate-x-1"></i>
                     </a>
                 </div>
@@ -347,15 +391,15 @@
             <!-- Projet 2 : Inclusif -->
             <div class="glass-card rounded-3xl overflow-hidden flex flex-col justify-between group">
                 <div class="p-8 space-y-4">
-                    <div class="inline-block px-3 py-1 rounded-full bg-purple-500/10 text-purple-400 text-xs font-semibold">Inclusion</div>
-                    <h3 class="font-heading font-bold text-xl text-white">Plateforme LMS Inclusive & Adaptative</h3>
-                    <p class="text-sm text-gray-300 leading-relaxed font-light">
+                    <div class="inline-block px-3 py-1 rounded-full bg-purple-500/10 text-purple-400 text-xs font-semibold" data-fr="Inclusion" data-en="Inclusion">Inclusion</div>
+                    <h3 class="font-heading font-bold text-xl text-white" data-fr="Plateforme LMS Inclusive & Adaptative" data-en="Inclusive & Adaptive LMS Platform">Plateforme LMS Inclusive & Adaptative</h3>
+                    <p class="text-sm text-gray-300 leading-relaxed font-light" data-fr="Solution e-learning conçue spécifiquement pour les élèves en situation de handicap, offrant accessibilité et adaptabilité sur-mesure." data-en="E-learning solution designed specifically for students with disabilities, offering custom accessibility and adaptability.">
                         Solution e-learning conçue spécifiquement pour les élèves en situation de handicap, offrant accessibilité et adaptabilité sur-mesure.
                     </p>
                 </div>
                 <div class="p-8 pt-0">
                     <a href="https://courageous-bavarois-a47891.netlify.app/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-purple-400 font-medium text-sm group-hover:text-white transition-colors">
-                        <span>Voir le projet</span>
+                        <span data-fr="Voir le projet" data-en="View project">Voir le projet</span>
                         <i class="fa-solid fa-arrow-up-right-from-square text-xs transition-transform group-hover:translate-x-1"></i>
                     </a>
                 </div>
@@ -364,15 +408,15 @@
             <!-- Projet 3 : Nazaha -->
             <div class="glass-card rounded-3xl overflow-hidden flex flex-col justify-between group">
                 <div class="p-8 space-y-4">
-                    <div class="inline-block px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-semibold">Civique</div>
-                    <h3 class="font-heading font-bold text-xl text-white">Plateforme Citoyenne ("Nazaha")</h3>
-                    <p class="text-sm text-gray-300 leading-relaxed font-light">
+                    <div class="inline-block px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-semibold" data-fr="Civique" data-en="Civic">Civique</div>
+                    <h3 class="font-heading font-bold text-xl text-white" data-fr='Plateforme Citoyenne ("Nazaha")' data-en='Citizen Platform ("Nazaha")'>Plateforme Citoyenne ("Nazaha")</h3>
+                    <p class="text-sm text-gray-300 leading-relaxed font-light" data-fr='Application innovante de simplification des démarches administratives pour lutter contre la corruption ("rachwa") et fluidifier les services.' data-en='Innovative application to simplify administrative procedures to fight corruption and streamline services.'>
                         Application innovante de simplification des démarches administratives pour lutter contre la corruption ("rachwa") et fluidifier les services.
                     </p>
                 </div>
                 <div class="p-8 pt-0">
                     <a href="https://zabilfzahra-ops.github.io/dalile-service/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-emerald-400 font-medium text-sm group-hover:text-white transition-colors">
-                        <span>Voir le projet</span>
+                        <span data-fr="Voir le projet" data-en="View project">Voir le projet</span>
                         <i class="fa-solid fa-arrow-up-right-from-square text-xs transition-transform group-hover:translate-x-1"></i>
                     </a>
                 </div>
@@ -383,8 +427,8 @@
     <!-- SECTION EXPÉRIENCES PROFESSIONNELLES -->
     <section id="experiences" class="py-24 px-6 max-w-4xl mx-auto">
         <div class="space-y-4 mb-16 text-center">
-            <span class="text-blue-400 font-mono text-xs uppercase tracking-widest">Parcours pro</span>
-            <h2 class="font-heading text-3xl sm:text-4xl font-bold text-white">Expériences Professionnelles Clés</h2>
+            <span class="text-blue-400 font-mono text-xs uppercase tracking-widest" data-fr="Parcours pro" data-en="Pro background">Parcours pro</span>
+            <h2 class="font-heading text-3xl sm:text-4xl font-bold text-white" data-fr="Expériences Professionnelles Clés" data-en="Key Professional Experience">Expériences Professionnelles Clés</h2>
         </div>
 
         <div class="space-y-6">
@@ -392,12 +436,12 @@
             <div class="glass-card rounded-2xl p-6 sm:p-8 space-y-3">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                     <div>
-                        <h3 class="font-heading font-bold text-lg text-white">Stagiaire en Ingénierie Pédagogique</h3>
+                        <h3 class="font-heading font-bold text-lg text-white" data-fr="Stagiaire en Ingénierie Pédagogique" data-en="Educational Engineering Intern">Stagiaire en Ingénierie Pédagogique</h3>
                         <p class="text-sm text-blue-400 font-medium">WeLearn — Casablanca</p>
                     </div>
-                    <span class="text-xs font-mono text-gray-400 px-3 py-1 rounded-full glass w-fit">Août 2026</span>
+                    <span class="text-xs font-mono text-gray-400 px-3 py-1 rounded-full glass w-fit" data-fr="Août 2026" data-en="August 2026">Août 2026</span>
                 </div>
-                <p class="text-sm text-gray-300 leading-relaxed font-light">
+                <p class="text-sm text-gray-300 leading-relaxed font-light" data-fr="Recherche et test de plugins Moodle, évaluation approfondie d'outils numériques, conception de storyboards pédagogiques et réalisation de montages vidéo pour des parcours e-learning." data-en="Research and testing of Moodle plugins, thorough evaluation of digital tools, design of educational storyboards, and video editing for e-learning paths.">
                     Recherche et test de plugins Moodle, évaluation approfondie d'outils numériques, conception de storyboards pédagogiques et réalisation de montages vidéo pour des parcours e-learning.
                 </p>
             </div>
@@ -406,12 +450,12 @@
             <div class="glass-card rounded-2xl p-6 sm:p-8 space-y-3">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                     <div>
-                        <h3 class="font-heading font-bold text-lg text-white">Stagiaire PFE</h3>
+                        <h3 class="font-heading font-bold text-lg text-white" data-fr="Stagiaire PFE" data-en="PFE Intern">Stagiaire PFE</h3>
                         <p class="text-sm text-purple-400 font-medium">École Shaeir Alhamra — Agadir</p>
                     </div>
                     <span class="text-xs font-mono text-gray-400 px-3 py-1 rounded-full glass w-fit">2025</span>
                 </div>
-                <p class="text-sm text-gray-300 leading-relaxed font-light">
+                <p class="text-sm text-gray-300 leading-relaxed font-light" data-fr="Observation et animation de classes, mise en place d'un accompagnement individualisé des élèves et contribution active à la gestion de projets pédagogiques." data-en="Class observation and teaching, implementation of individualized student support, and active contribution to educational project management.">
                     Observation et animation de classes, mise en place d'un accompagnement individualisé des élèves et contribution active à la gestion de projets pédagogiques.
                 </p>
             </div>
@@ -420,12 +464,12 @@
             <div class="glass-card rounded-2xl p-6 sm:p-8 space-y-3">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                     <div>
-                        <h3 class="font-heading font-bold text-lg text-white">Stagiaire en Actions Éducatives</h3>
+                        <h3 class="font-heading font-bold text-lg text-white" data-fr="Stagiaire en Actions Éducatives" data-en="Educational Actions Intern">Stagiaire en Actions Éducatives</h3>
                         <p class="text-sm text-emerald-400 font-medium">Agadir & Témara</p>
                     </div>
                     <span class="text-xs font-mono text-gray-400 px-3 py-1 rounded-full glass w-fit">2022 – 2025</span>
                 </div>
-                <p class="text-sm text-gray-300 leading-relaxed font-light">
+                <p class="text-sm text-gray-300 leading-relaxed font-light" data-fr="Animation de classes, soutien scolaire ciblé, accompagnement personnalisé des élèves et maîtrise de la gestion administrative via Massar et Excel." data-en="Class teaching, targeted tutoring, personalized student support, and mastery of administrative management via Massar and Excel.">
                     Animation de classes, soutien scolaire ciblé, accompagnement personnalisé des élèves et maîtrise de la gestion administrative via Massar et Excel.
                 </p>
             </div>
@@ -436,62 +480,62 @@
     <section id="contact" class="py-24 px-6 max-w-6xl mx-auto">
         <div class="glass-card rounded-3xl p-8 sm:p-12 lg:p-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div class="lg:col-span-5 space-y-6">
-                <span class="text-blue-400 font-mono text-xs uppercase tracking-widest">Collaborons ensemble</span>
-                <h2 class="font-heading text-3xl sm:text-4xl font-bold text-white">Me Contacter</h2>
-                <p class="text-gray-300 text-sm leading-relaxed font-light">
+                <span class="text-blue-400 font-mono text-xs uppercase tracking-widest" data-fr="Collaborons ensemble" data-en="Let's collaborate">Collaborons ensemble</span>
+                <h2 class="font-heading text-3xl sm:text-4xl font-bold text-white" data-fr="Me Contacter" data-en="Contact Me">Me Contacter</h2>
+                <p class="text-gray-300 text-sm leading-relaxed font-light" data-fr="Une idée, un projet ou une opportunité EdTech ? Écrivez-moi, je serai ravie d'échanger avec vous." data-en="An idea, a project, or an EdTech opportunity? Write to me, I'll be delighted to chat with you.">
                     Une idée, un projet ou une opportunité EdTech ? Écrivez-moi, je serai ravie d'échanger avec vous.
                 </p>
 
                 <div class="space-y-4 pt-4 text-sm">
-                    <a href="mailto:zabilfzahra@gmail.com" class="flex items-center gap-4 text-gray-300 hover:text-white transition-colors group">
+                    <a href="mailto:zabilfzahra@gmail.com" class="flex items-center gap-4 text-gray-300 hover:text-blue-500 transition-colors group">
                         <div class="w-10 h-10 rounded-full glass flex items-center justify-center text-blue-400 group-hover:scale-110 transition-transform">
                             <i class="fa-regular fa-envelope"></i>
                         </div>
                         <span>zabilfzahra@gmail.com</span>
                     </a>
-                    <a href="https://wa.me/212621368581" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 text-gray-300 hover:text-white transition-colors group">
+                    <a href="https://wa.me/212621368581" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 text-gray-300 hover:text-blue-500 transition-colors group">
                         <div class="w-10 h-10 rounded-full glass flex items-center justify-center text-green-400 group-hover:scale-110 transition-transform">
                             <i class="fa-solid fa-phone"></i>
                         </div>
-                        <span>0621368581 (Appel / WhatsApp)</span>
+                        <span data-fr="0621368581 (Appel / WhatsApp)" data-en="0621368581 (Call / WhatsApp)">0621368581 (Appel / WhatsApp)</span>
                     </a>
-                    <a href="https://www.linkedin.com/in/fatima-zahra-zabil-33a0033b1/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 text-gray-300 hover:text-white transition-colors group">
+                    <a href="https://www.linkedin.com/in/fatima-zahra-zabil-33a0033b1/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 text-gray-300 hover:text-blue-500 transition-colors group">
                         <div class="w-10 h-10 rounded-full glass flex items-center justify-center text-blue-500 group-hover:scale-110 transition-transform">
                             <i class="fa-brands fa-linkedin"></i>
                         </div>
-                        <span>Fatima Zahra Zabil sur LinkedIn</span>
+                        <span data-fr="Fatima Zahra Zabil sur LinkedIn" data-en="Fatima Zahra Zabil on LinkedIn">Fatima Zahra Zabil sur LinkedIn</span>
                     </a>
                     <div class="flex items-center gap-4 text-gray-300">
                         <div class="w-10 h-10 rounded-full glass flex items-center justify-center text-red-400">
                             <i class="fa-solid fa-location-dot"></i>
                         </div>
-                        <span>Agadir, Maroc</span>
+                        <span data-fr="Agadir, Maroc" data-en="Agadir, Morocco">Agadir, Maroc</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Formulaire de contact interactif -->
+            <!-- Formulaire de contact fonctionnel avec Formspree -->
             <div class="lg:col-span-7">
-                <form id="contactForm" class="space-y-4" onsubmit="event.preventDefault(); alert('Merci ! Votre message a bien été simulé et envoyé.');">
+                <form action="https://formspree.io/f/xrpgaeyv" method="POST" class="space-y-4">
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-xs font-medium text-gray-400 mb-1">Nom complet</label>
-                            <input type="text" required class="w-full glass rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="Votre nom">
+                            <label class="block text-xs font-medium text-gray-400 mb-1" data-fr="Nom complet" data-en="Full Name">Nom complet</label>
+                            <input type="text" name="name" required class="w-full glass rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors" data-fr-placeholder="Votre nom" data-en-placeholder="Your name" placeholder="Votre nom">
                         </div>
                         <div>
-                            <label class="block text-xs font-medium text-gray-400 mb-1">Votre email</label>
-                            <input type="email" required class="w-full glass rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="votre@email.com">
+                            <label class="block text-xs font-medium text-gray-400 mb-1" data-fr="Votre email" data-en="Your email">Votre email</label>
+                            <input type="email" name="email" required class="w-full glass rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors" data-fr-placeholder="votre@email.com" data-en-placeholder="your@email.com" placeholder="votre@email.com">
                         </div>
                     </div>
                     <div>
-                        <label class="block text-xs font-medium text-gray-400 mb-1">Sujet</label>
-                        <input type="text" required class="w-full glass rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="Objet de votre message">
+                        <label class="block text-xs font-medium text-gray-400 mb-1" data-fr="Sujet" data-en="Subject">Sujet</label>
+                        <input type="text" name="_subject" required class="w-full glass rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors" data-fr-placeholder="Objet de votre message" data-en-placeholder="Subject of your message" placeholder="Objet de votre message">
                     </div>
                     <div>
-                        <label class="block text-xs font-medium text-gray-400 mb-1">Message</label>
-                        <textarea rows="4" required class="w-full glass rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors resize-none" placeholder="Votre message..."></textarea>
+                        <label class="block text-xs font-medium text-gray-400 mb-1" data-fr="Message" data-en="Message">Message</label>
+                        <textarea name="message" rows="4" required class="w-full glass rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors resize-none" data-fr-placeholder="Votre message..." data-en-placeholder="Your message..." placeholder="Votre message..."></textarea>
                     </div>
-                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-medium py-3.5 rounded-xl transition-all shadow-lg shadow-blue-600/20">
+                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-medium py-3.5 rounded-xl transition-all shadow-lg shadow-blue-600/20" data-fr="Envoyer le message" data-en="Send message">
                         Envoyer le message
                     </button>
                 </form>
@@ -501,22 +545,62 @@
 
     <!-- PIED DE PAGE -->
     <footer class="py-8 px-6 border-t border-white/10 text-center text-xs text-gray-500">
-        <p>© 2026 ZABIL Fatima Zahra. Tous droits réservés. Conçu avec passion & rigueur EdTech.</p>
+        <p data-fr="© 2026 ZABIL Fatima Zahra. Tous droits réservés. Conçu avec passion & rigueur EdTech." data-en="© 2026 ZABIL Fatima Zahra. All rights reserved. Designed with passion & EdTech rigor.">© 2026 ZABIL Fatima Zahra. Tous droits réservés. Conçu avec passion & rigueur EdTech.</p>
     </footer>
 
-    <!-- JavaScript minimal pour les interactions fluides et la navigation -->
+    <!-- Scripts pour les interactions, le mode clair/sombre et la traduction -->
     <script>
+        // Défilement fluide des ancres
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth'
-                    });
+                    target.scrollIntoView({ behavior: 'smooth' });
                 }
             });
         });
+
+        // Gestion du Mode Clair / Sombre
+        function toggleTheme() {
+            const html = document.getElementById('html-root');
+            const icon = document.getElementById('theme-icon');
+            if (html.classList.contains('light')) {
+                html.classList.remove('light');
+                icon.className = 'fa-solid fa-sun';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                html.classList.add('light');
+                icon.className = 'fa-solid fa-moon';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Restauration du thème au chargement
+        if (localStorage.getItem('theme') === 'light') {
+            document.getElementById('html-root').classList.add('light');
+            document.getElementById('theme-icon').className = 'fa-solid fa-moon';
+        }
+
+        // Gestion de la traduction (Français <-> Anglais)
+        let currentLang = 'fr';
+        function toggleLanguage() {
+            currentLang = currentLang === 'fr' ? 'en' : 'fr';
+            document.getElementById('lang-toggle').innerText = currentLang === 'fr' ? 'EN' : 'FR';
+            document.documentElement.setAttribute('lang', currentLang);
+
+            // Traduction des balises avec attributs data-fr / data-en
+            document.querySelectorAll('[data-fr]').forEach(el => {
+                const text = el.getAttribute(`data-${currentLang}`);
+                if (text) el.innerText = text;
+            });
+
+            // Traduction des placeholders de formulaires
+            document.querySelectorAll('[data-fr-placeholder]').forEach(el => {
+                const placeholder = el.getAttribute(`data-${currentLang}-placeholder`);
+                if (placeholder) el.setAttribute('placeholder', placeholder);
+            });
+        }
     </script>
 </body>
 </html>
